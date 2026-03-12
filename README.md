@@ -86,9 +86,12 @@ El bucle se repite hasta que se ingresen valores válidos.
  
 ```
 proyecto/
-├── inventario.py       # Script principal
-└── docs/
-    └── diagrama_flujo.png  # Diagrama de flujo del programa
+├── docs/
+│   └── diagramagestioninventario.png  # Diagrama de flujo del programa
+├── .gitignore
+├── inventario.py           # Script principal
+├── LICENSE
+└── README.md
 ```
  
 ---
