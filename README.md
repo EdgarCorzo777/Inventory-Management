@@ -31,7 +31,7 @@ El programa solicitará los siguientes datos de forma interactiva:
 | Campo      | Tipo    | Descripción                        |
 |------------|---------|------------------------------------|
 | Nombre     | Texto   | Nombre del producto                |
-| Precio     | Decimal | Precio unitario del producto (USD) |
+| Precio     | Decimal | Precio unitario del producto       |
 | Cantidad   | Entero  | Cantidad de unidades               |
  
 ---
