@@ -11,7 +11,7 @@ while True:
             break
         else:
             # Si el precio es cero o negativo, muestra un mensaje y repite el bucle
-            print("Error: Ingrese un valor valido.")
+            print("Error: Ingrese un precio valido.")
     except ValueError:
         # Si ingresa un dato no numérico, muestra un mensaje y repite el bucle
         print("Error: Ingresar solo valores numericos")
