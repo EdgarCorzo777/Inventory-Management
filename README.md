@@ -4,13 +4,13 @@ Programa de consola en Python que gestiona el inventario de productos, validando
 
 ---
 
-## 📋 Descripción
+## 📋 Descripción:
 
 El programa guía al usuario a ingresar el nombre, precio y cantidad de un producto. Valida que el precio y la cantidad sean valores numéricos y mayores a cero mediante bucles con manejo de excepciones. Finalmente, calcula el costo total y muestra un resumen formateado.
 
 ---
 
-## ⚙️ Requisitos
+## ⚙️ Requisitos:
 
 - Python 3.x
 
@@ -18,7 +18,7 @@ No requiere librerías externas.
 
 ---
 
-## 🚀 Uso
+## 🚀 Uso:
 
 Ejecuta el script desde la terminal:
 
@@ -36,7 +36,7 @@ El programa solicitará los siguientes datos de forma interactiva:
 
 ---
 
-## 💡 Ejemplo de ejecución
+## 💡 Ejemplo de ejecución:
 
 ```
 Ingrese el nombre del producto: Arroz
@@ -48,7 +48,7 @@ Producto: Arroz | Precio: $2.500 | Cantidad: 4 | Total: $10.000
 
 ---
 
-## 🔒 Validación de datos
+## 🔒 Validación de datos:
 
 El programa aplica dos validaciones independientes, una para el precio y otra para la cantidad. Cada una verifica dos condiciones:
 
@@ -72,13 +72,13 @@ El bucle se repite hasta que se ingresen valores válidos en ambos campos.
 
 ---
 
-## 📊 Diagrama de Flujo
+## 📊 Diagrama de Flujo:
 
 ![Diagrama de flujo](docs/diagramagestioninventario.png)
 
 ---
 
-## 🧠 Lógica del programa
+## 🧠 Lógica del programa:
 
 ```
 1. Solicitar nombre del producto
@@ -96,7 +96,7 @@ El bucle se repite hasta que se ingresen valores válidos en ambos campos.
 
 ---
 
-## 📁 Estructura del proyecto
+## 📁 Estructura del proyecto:
 
 ```
 proyecto/
@@ -110,6 +110,6 @@ proyecto/
 
 ---
 
-## 👤 Autor
+## 👤 Autores:
 
 Edgar Corzo, Dylan Castillo, Jefferson Cacerez.
