@@ -1,5 +1,5 @@
 def agregar_producto(inventario):
-    # Solicita el nombre del producto sin validación, acepta cualquier texto
+    # Solicita el nombre del producto
     nombre_producto = input("Ingrese el nombre del producto: ")
 
     x = 1
