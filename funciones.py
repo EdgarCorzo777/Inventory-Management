@@ -43,5 +43,5 @@ def calcular_estadisticas(inventario):
     precio_total = sum(p['precio'] * p['cantidad'] for p in inventario)
     # Suma la cantidad total de unidades en el inventario
     cantidad_total = sum(p['cantidad'] for p in inventario)
-    print(f"Valor total del inventario: ${precio_total:.2f}")
+    print(f"Valor total del inventario: ${precio_total}")
     print(f"Cantidad total de productos: {cantidad_total}")
