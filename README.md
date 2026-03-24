@@ -110,6 +110,6 @@ proyecto/
 
 ---
 
-## 👤 Autores:
+## 👤 Autor:
 
-Edgar Corzo, Dylan Castillo, Jefferson Cacerez.
+Edgar Corzo.
