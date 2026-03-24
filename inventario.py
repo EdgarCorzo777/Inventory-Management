@@ -1,5 +1,5 @@
 # Importación de las funciones definidas en el archivo funciones.py
-from funciones import agregar_producto, mostrar_inventario, calcular_estadisticas
+from funciones import *
 
 # Encabezado visual del programa
 print("=" * 30)
@@ -24,6 +24,7 @@ while opcion != 4:
     """)
 
     # Validación de la entrada del menú, evita que el programa crashee con letras
+    
     try:
         opcion = int(input("Ingrese la opcion (1-4): "))
     except ValueError:
