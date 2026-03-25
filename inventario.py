@@ -97,9 +97,33 @@ while opcion != 9:
     elif opcion == 7:
         ruta = input("Ingrese la ruta donde desea guardar el archivo: (ej: productos.csv) ")
         guardar_csv(inventario, ruta)
-
+         
     elif opcion == 8:
-        
+        ruta = input("Ingrese la ruta del archivo CSV a cargar: ")
+        resultado = cargar_csv(ruta)
+
+        if resultado is None:
+            pass
+        else:
+            productos_cargados, errores = resultado
+
+            opcion_carga = input("¿Deseas sobreescribir el inventario actual? (S/N): ").upper()
+
+            if opcion_carga == "S":
+                inventario.clear()
+                inventario.extend(productos_cargados)
+            else:
+                for p in productos_cargados:
+                    existe = buscar_producto(inventario, p["nombre"])
+
+                    if existe:
+                        existe["cantidad"] += p["cantidad"]
+                        existe["precio"] = p["precio"]
+                    else:
+                        inventario.append(p)
+                    
+                print(f"Productos cargados: {len(productos_cargados)}")
+                print(f"Filas invalidas omitidas: {errores}")
 
     elif opcion == 9:
         print("Saliendo del programa...")
