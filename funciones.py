@@ -18,10 +18,10 @@ def agregar_producto(inventario):
             if precio_producto == "salir":
                 return
             else:
-                precio_producto = int(precio_producto)
-                if precio_producto < 0:
+                precio_producto = float(precio_producto)
+                if precio_producto <= 0:
                     print("Error: Ingrese un valor mayor a cero.")
-                    return
+                    continue
                 break
         except ValueError:
             print("Error: Ingrese un valor numerico.")
@@ -36,9 +36,9 @@ def agregar_producto(inventario):
                 return
             else:
                 cantidad_producto = int(cantidad_producto)
-                if cantidad_producto < 0:
+                if cantidad_producto <= 0:
                     print("Error: Ingrese un valor mayor a cero.")
-                    return
+                    continue
                 break
         except ValueError:
             print("Error: Ingrese un valor numerico.")
@@ -63,12 +63,61 @@ def mostrar_inventario(inventario):
         for i, p in enumerate(inventario, start=1):
             print(f"{i} Producto: {p['nombre']} | Precio: ${p['precio']} | Cantidad: {p['cantidad']}")
 
+
+def buscar_producto(inventario, nombre):
+    for p in inventario:
+        if p["nombre"] == nombre:
+            return p
+    return None
+
+
+def actualizar_producto(inventario, nombre, nuevo_precio=None, nueva_cantidad=None):
+    producto = buscar_producto(inventario, nombre)
+
+    if producto is None:
+        print("Producto no encontrado")
+        return
+
+    if nuevo_precio is not None:
+        producto["precio"] = nuevo_precio
+
+    if nueva_cantidad is not None:
+        producto["cantidad"] = nueva_cantidad
+
+    print(f"Producto '{nombre}' actualizado correctamente.")
+
+
+def eliminar_producto(inventario, nombre):
+    producto = buscar_producto(inventario, nombre)
+
+    if producto is None:
+        print("Producto no encontrado")
+        return
+    
+    inventario.remove(producto)
+    print("Producto eliminado correctamente.")
+    
+
 def calcular_estadisticas(inventario):
     if len(inventario) == 0:
         print("El inventario esta vacio.\n")
     else:
-        precio_total = sum(p['precio'] * p['cantidad'] for p in inventario)
-        cantidad_total = len(inventario)
+        valor_total = sum(p['precio'] * p['cantidad'] for p in inventario)
+        unidades_totales = len(inventario)
+        producto_mas_caro = inventario[0]
 
-        print(f"Valor total del inventario: ${precio_total}")
-        print(f"Cantidad total de productos: {cantidad_total}")
+        for pp in inventario:
+            if pp["precio"] > producto_mas_caro["precio"]:
+                producto_mas_caro = pp
+        
+        producto_mayor_stock = inventario[0]
+
+        for pc in inventario:
+            if pc["cantidad"] > producto_mayor_stock["cantidad"]:
+                producto_mayor_stock = pc
+
+
+        print(f"Cantidad total de productos: {unidades_totales}")
+        print(f"Valor total del inventario: ${valor_total}")
+        print(f"Producto más caro: {producto_mas_caro['nombre']} - ${producto_mas_caro['precio']}")
+        print(f"Producto con mayor stock: {producto_mayor_stock['nombre']} - {producto_mayor_stock['cantidad']}")
