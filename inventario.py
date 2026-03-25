@@ -1,5 +1,6 @@
 # Importación de las funciones definidas en el archivo funciones.py
 from funciones import *
+from archivos import *
 
 # Encabezado visual del programa
 print("=" * 30)
@@ -13,7 +14,7 @@ opcion = 0
 inventario = []
 
 # Bucle principal del menú, se ejecuta hasta que el usuario elija salir
-while opcion != 7:
+while opcion != 9:
 
     # Menú de opciones disponibles para el usuario
     print("""Elija la opcion deseada:
@@ -23,13 +24,15 @@ while opcion != 7:
         4. Actualizar productos
         5. Eliminar productos
         6. Calcular estadisticas
-        7. Salir
+        7. Guardar CSV
+        8. Cargar CSV
+        9. Salir
     """)
 
     # Validación de la entrada del menú, evita que el programa crashee con letras
     
     try:
-        opcion = int(input("Ingrese la opcion (1-7): "))
+        opcion = int(input("Ingrese la opcion (1-9): "))
     except ValueError:
         print("Error: Ingresa un valor numerico.\n")
         continue
@@ -49,17 +52,34 @@ while opcion != 7:
         else:
             print("Producto no encontrado.")
 
-    elif opcion == 4: 
+    elif opcion == 4:
+        x = 1
         nombre = input("Ingrese el nombre del producto a actualizar: ")
 
         if buscar_producto(inventario, nombre) is None:
             print("Producto no encontrado")
         else:
-            nuevo_precio_input = input("Ingrese el nuevo precio o Enter para dejarlo igual: ")
-            nueva_cantidad_input = input("Ingrese la nueva cantidad o Enter para dejarla igual: ")
-        
-            nuevo_precio = int(nuevo_precio_input) if nuevo_precio_input != "" else None
-            nueva_cantidad = int(nueva_cantidad_input) if nueva_cantidad_input != "" else None
+            while x:
+                try:
+                    nuevo_precio = int(input("Ingrese el nuevo precio: "))
+
+                    if nuevo_precio <= 0:
+                        print("Error: Ingrese un valor mayor a cero.")
+                        continue
+                    break
+                except ValueError:
+                    print("Error: Ingrese un valor numerico")
+            
+            while x:
+                try:
+                    nueva_cantidad = int(input("Ingrese la nueva cantidad: "))
+
+                    if nueva_cantidad <= 0:
+                        print("Error: Ingrese un valor mayor a cero.")
+                        continue
+                    break
+                except ValueError:
+                    print("Error: Ingrese un valor numerico")
         
             actualizar_producto(inventario, nombre, nuevo_precio, nueva_cantidad)
 
@@ -75,11 +95,18 @@ while opcion != 7:
         calcular_estadisticas(inventario)
 
     elif opcion == 7:
+        ruta = input("Ingrese la ruta donde desea guardar el archivo: (ej: productos.csv) ")
+        guardar_csv(inventario, ruta)
+
+    elif opcion == 8:
+        
+
+    elif opcion == 9:
         print("Saliendo del programa...")
         break
 
     else:
-        print("Opcion no valida. Por favor, ingrese una opcion entre 1 y 7.\n")
+        print("Opcion no valida. Por favor, ingrese una opcion entre 1 y 9.\n")
 
 # Objetivo de la semana: construir un sistema de gestión de inventario en Python
 # aplicando listas, diccionarios, funciones, modularización y manejo de errores.
