@@ -16,7 +16,7 @@ El programa es un sistema completo de gestión de inventario. Ofrece un menú in
 Ejecuta el script principal desde la terminal:
 
 ```bash
-python app.py
+python3 app.py
 ```
 
 El programa mostrará un menú interactivo con las siguientes opciones:
