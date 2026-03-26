@@ -37,6 +37,40 @@ El programa mostrará un menú interactivo con las siguientes opciones:
 ## 💡 Ejemplo de ejecución:
 
 ```
+==============================
+| 📦 INVENTORY MANAGEMENT 📦 |
+==============================
+
+1. Agregar producto
+2. Mostrar inventario
+...
+Ingrese la opcion (1-9): 1
+Ingrese el nombre del producto: Laptop
+Ingrese el precio del producto o 'salir' si desea volver al menu: 1250.50
+Ingrese la cantidad del producto o 'salir' si desea volver al menu: 8
+
+==============================
+| 📦 INVENTORY MANAGEMENT 📦 |
+==============================
+...
+Ingrese la opcion (1-9): 2
+1 Producto: Laptop | Precio: $1250.5 | Cantidad: 8
+```
+
+---
+## 🔒 Validación de datos:
+El programa aplica validaciones estrictas en todas las operaciones para evitar errores:
+
+1. **Nombre del producto**: No puede estar vacío.
+2. **Precio**: Debe ser un número mayor a 0. Si se ingresa texto o valor ≤ 0, muestra error y vuelve a pedirlo.
+3. **Cantidad**: Debe ser un número entero mayor a 0. Si se ingresa texto o valor ≤ 0, muestra error y vuelve a pedirlo.
+4. **Archivos CSV**: Verifica que el archivo termine en `.csv`, que tenga el encabezado correcto (`nombre,precio,cantidad`) y que cada fila tenga datos válidos. Las filas inválidas se omiten y se reportan.
+
+Ejemplo de error de validación:
+```
+Ingrese el precio del producto o 'salir' si desea volver al menu: abc
+Error: Ingrese un valor numerico.
+```
 ---
 
 ## 📊 Diagrama de Flujo:
