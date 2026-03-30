@@ -160,37 +160,39 @@ def eliminar_producto(inventario, nombre):
 
 def calcular_estadisticas(inventario):
     """
-    Calcula y muestra estadísticas del inventario: cantidad total de productos,
-    valor total, producto más caro y producto con mayor stock.
+    Calcula y muestra estadísticas del inventario:
+    
+Cantidad total de productos
+Valor total del inventario
+Producto(s) más caro(s)
+Producto(s) con mayor stock
+"""
+if len(inventario) == 0:
+    print("El inventario está vacío.\n")
+    return
 
-    Parámetros:
-        inventario (list): Lista de diccionarios con los productos.
+    # Valor total del inventario
+    valor_total = sum(p['precio'] * p['cantidad'] for p in inventario)
 
-    Retorna:
-        None
-    """
-    if len(inventario) == 0:
-        print("El inventario esta vacio.\n")
-    else:
-        # Calcula el valor total sumando precio * cantidad de cada producto
-        valor_total = sum(p['precio'] * p['cantidad'] for p in inventario)
+    # Cantidad total de productos diferentes
+    unidades_totales = len(inventario)
 
-        # Cuenta la cantidad total de productos en el inventario
-        unidades_totales = len(inventario)
-
-        # Busca el producto con el precio más alto
-        producto_mas_caro = inventario[0]
-        for pp in inventario:
-            if pp["precio"] > producto_mas_caro["precio"]:
-                producto_mas_caro = pp
-
-        # Busca el producto con la mayor cantidad en stock
-        producto_mayor_stock = inventario[0]
-        for pc in inventario:
-            if pc["cantidad"] > producto_mayor_stock["cantidad"]:
-                producto_mayor_stock = pc
+    # ==================== PRODUCTO(S) MÁS CARO(S) ====================
+    if inventario:
+        precio_max = max(p['precio'] for p in inventario)
+        productos_mas_caros = [p for p in inventario if p['precio'] == precio_max]
 
         print(f"Cantidad total de productos: {unidades_totales}")
-        print(f"Valor total del inventario: ${valor_total}")
-        print(f"Producto más caro: {producto_mas_caro['nombre']} - ${producto_mas_caro['precio']}")
-        print(f"Producto con mayor stock: {producto_mayor_stock['nombre']} - {producto_mayor_stock['cantidad']}")
+        print(f"Valor total del inventario: ${valor_total:,.2f}")
+
+        print("\nProducto(s) más caro(s):")
+        for p in productos_mas_caros:
+            print(f"  • {p['nombre']} - ${p['precio']:,.2f}")
+
+        # ==================== PRODUCTO(S) CON MAYOR STOCK ====================
+        cantidad_max = max(p['cantidad'] for p in inventario)
+        productos_mayor_stock = [p for p in inventario if p['cantidad'] == cantidad_max]
+
+        print("\nProducto(s) con mayor stock:")
+        for p in productos_mayor_stock:
+            print(f"  • {p['nombre']} - {p['cantidad']} unidades")
